@@ -1,3 +1,10 @@
-const myRoot = document.querySelector("#root");
+import { CardGame } from "./src/components/CardGame";
 
-console.log(myRoot);
+import "./src/styles/settings/colors.css";
+import "./src/styles/generic/reset.css";
+import "./src/styles/elements/base.css";
+
+const $root = document.querySelector("#root");
+const $htmlCardGame = CardGame();
+
+$root.insertAdjacentHTML("beforeend", $htmlCardGame);
