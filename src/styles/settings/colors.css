@@ -1,5 +1,6 @@
 :root {
-  --color-alura: #051932;
-  --color-pomb-and-power: #7c5e99;
-  --color-floral-white: #fffcee;
+  --color-alura: hsl(213, 82%, 11%);
+  --color-pomb-and-power: hsl(271, 24%, 48%);
+  --color-floral-white: hsl(49, 100%, 97%);
+  --color-fiery-rose: hsl(351, 85%, 65%);
 }
