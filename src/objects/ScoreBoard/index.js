@@ -6,7 +6,7 @@ export function ScoreBoard(...players) {
   const playerOne = players[0];
   const playerTwo = players[1];
 
-  return `
+  return /*html*/ `
     <header class="score-board">
       ${PlayerName(playerOne)}
       ${PlayerName(playerTwo)}

@@ -8,7 +8,7 @@ export function BoardGame(pairs = 3) {
   const cardGame = CardGame();
   const boardGame = cardGame.repeat(totalPairs);
 
-  return `
+  return /*html*/ `
     <section class="board-game">
       ${boardGame}
     </section>
