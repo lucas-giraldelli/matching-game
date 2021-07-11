@@ -1,0 +1,5 @@
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.25rem;
+}
