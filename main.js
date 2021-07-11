@@ -1,5 +1,4 @@
-import { CardGame } from "./src/components/CardGame";
-import { PlayerName } from "./src/components/PlayerName";
+import { ScoreBoard } from "./src/objects/ScoreBoard";
 import { BoardGame } from "./src/objects/BoardGame";
 
 import "./src/styles/settings/colors.css";
@@ -10,23 +9,49 @@ const $html = document.querySelector("html");
 
 const fieryRose =
   getComputedStyle($html).getPropertyValue("--color-fiery-rose");
+const alura = getComputedStyle($html).getPropertyValue("--color-alura");
 
 const $root = document.querySelector("#root");
 const $htmlBoardGame = BoardGame(3);
-const $playerOne = PlayerName("Player 1");
-const $playerTwo = PlayerName("Player 2");
-const $playersContainer = document.createElement("header");
+const $htmlScoreBoard = ScoreBoard("Player one", "Player two");
 
-function flipCard(container, image) {
-  container.style.backgroundColor = fieryRose;
-  image.src = "./src/assets/images/logo-css.png";
+function toggleStyle(container, color, image, src) {
+  container.style.backgroundColor = color;
+  image.src = src;
 }
 
-$root.insertAdjacentElement("beforebegin", $playersContainer);
-$root.insertAdjacentHTML("beforeend", $htmlBoardGame);
+function turnCard(container, image) {
+  const isCurrentContainerFlipped = container.classList.contains("flipped");
 
-$playersContainer.insertAdjacentHTML("beforeend", $playerOne);
-$playersContainer.insertAdjacentHTML("beforeend", $playerTwo);
+  if (isCurrentContainerFlipped) {
+    //prettier-ignore
+    toggleStyle(
+      container,
+      alura,
+      image,
+      "./src/assets/images/alura-logo.svg"
+    );
+
+    container.classList.toggle("flipped", false);
+  } else {
+    toggleStyle(
+      container,
+      fieryRose,
+      image,
+      "./src/assets/images/logo-css.png"
+    );
+
+    container.classList.toggle("flipped", true);
+  }
+}
+
+$root.insertAdjacentHTML(
+  "beforeend",
+  `
+    ${$htmlScoreBoard}
+    ${$htmlBoardGame}
+  `
+);
 
 $root.addEventListener("click", (event) => {
   const { tagName } = event.target;
@@ -35,11 +60,11 @@ $root.addEventListener("click", (event) => {
     const container = event.target;
     const image = event.target.querySelector("img");
 
-    flipCard(container, image);
+    turnCard(container, image);
   } else if (tagName === "IMG") {
     const image = event.target;
     const container = event.target.closest("article");
 
-    flipCard(container, image);
+    turnCard(container, image);
   }
 });

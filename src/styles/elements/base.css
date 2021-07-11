@@ -1,11 +1,9 @@
 body {
+  user-select: none;
+
+  font-family: 'Press Start 2P', cursive;
   background-color: var(--color-pomb-and-power);
+
   max-width: 20rem;
   margin: 0 auto;
-}
-
-header {
-  display: flex;
-  justify-content: space-around;
-  margin: 1.25rem;
 }
