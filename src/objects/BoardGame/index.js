@@ -1,4 +1,5 @@
 import { CardGame } from "../../components/CardGame";
+import { getCSSVars } from "../../utils";
 
 import "./style.css";
 
