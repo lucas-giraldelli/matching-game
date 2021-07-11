@@ -1,10 +1,16 @@
 import { CardGame } from "../../components/CardGame";
 
+import "./style.css";
+
 export function BoardGame(pairs = 3) {
   const totalPairs = pairs * 2;
 
-  const htmlCardGame = CardGame();
-  const $htmlBoardGame = htmlCardGame.repeat(totalPairs);
+  const cardGame = CardGame();
+  const boardGame = cardGame.repeat(totalPairs);
 
-  return $htmlBoardGame;
+  return `
+    <section class="board-game">
+      ${boardGame}
+    </section>
+  `;
 }
