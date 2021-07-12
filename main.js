@@ -1,6 +1,6 @@
 import { ScoreBoard } from "./src/objects/ScoreBoard";
 import { BoardGame } from "./src/objects/BoardGame";
-import { getCSSVars } from "./src/utils";
+import { getCSSVars, dupeDeclarations } from "./src/utils";
 
 import "./src/styles/settings/colors.css";
 import "./src/styles/generic/reset.css";
@@ -13,6 +13,13 @@ const $root = document.querySelector("#root");
 const $htmlBoardGame = BoardGame(3);
 const $htmlScoreBoard = ScoreBoard("Player one", "Player two");
 
+/**
+ * @param {string} action accepts "flip" or "unflip"
+ * @param {Element} container ref to parent
+ * @param {string} color color string to change between
+ * @param {Element} image ref to image itself
+ * @param {string} src image path to change between
+ */
 function toggleStyle(action, container, color, image, src) {
   const flip = {
     flip: true,
@@ -57,16 +64,16 @@ $root.insertAdjacentHTML(
 const $htmlBoardGameRef = document.querySelector("section");
 
 $htmlBoardGameRef.addEventListener("click", (event) => {
-  const { tagName } = event.target;
+  const [currentElement, { tagName }] = dupeDeclarations(event.target);
 
   if (tagName === "ARTICLE") {
-    const container = event.target;
-    const image = event.target.querySelector("img");
+    const container = currentElement;
+    const image = currentElement.querySelector("img");
 
     turnCard(container, image);
   } else if (tagName === "IMG") {
-    const image = event.target;
-    const container = event.target.closest("article");
+    const image = currentElement;
+    const container = currentElement.closest("article");
 
     turnCard(container, image);
   }

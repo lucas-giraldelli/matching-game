@@ -1,3 +1,7 @@
+/**
+ * @param {string} string accepts a css var from elements/base.css
+ * @returns {string} returns a string representing css color;
+ */
 export function getCSSVars(string) {
   const $html = document.querySelector("html");
 
@@ -5,7 +9,7 @@ export function getCSSVars(string) {
 }
 
 /**
- * @param {String} HTML representing any number of sibling elements
+ * @param {string} HTML representing any number of sibling elements
  * @return {NodeList} nodeList containing all tags converted from string
  */
 export function stringToHTML(string) {
@@ -14,4 +18,13 @@ export function stringToHTML(string) {
   template.innerHTML = html;
 
   return template.content.firstChild;
+}
+
+/**
+ *
+ * @param {any} input any variable to dupe destructuring
+ * @returns {array[]} returns a dupped array
+ */
+export function dupeDeclarations(input) {
+  return [input, input];
 }
