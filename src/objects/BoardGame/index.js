@@ -1,4 +1,4 @@
-import { CardGame } from "../../components/CardGame";
+import { CardFrontBack } from "../../components/CardFrontBack";
 
 import "./style.css";
 
@@ -9,8 +9,8 @@ import "./style.css";
 export function BoardGame(pairs = 3) {
   const totalPairs = pairs * 2;
 
-  const cardGame = CardGame();
-  const boardGame = cardGame.repeat(totalPairs);
+  const cardFrontBack = CardFrontBack();
+  const boardGame = cardFrontBack.repeat(totalPairs);
 
   return /*html*/ `
     <section class="board-game">
